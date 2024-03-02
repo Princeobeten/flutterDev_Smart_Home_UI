@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
              child: Column( crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Welcome Home,", style: TextStyle(fontSize: 28, color: Colors.grey[700]),),
-                const Text("Prince Obeten", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),),
+                const Text("Prince Obeten", style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
               ],
              ),
            ), const SizedBox(height: 10),
