@@ -35,8 +35,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
+        child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               
@@ -95,7 +94,6 @@ class _HomePageState extends State<HomePage> {
           
           ],),
         ),
-      )
-    );
+      );
   }
 }
