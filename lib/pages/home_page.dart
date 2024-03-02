@@ -35,64 +35,66 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            
-            // custom app bar
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
-              child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              
+              // custom app bar
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
+                child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                  // menu icons
+                  Image.asset('lib/icons/menu.png', height: 45, color: Colors.grey[800],),
+                        
+                  // account icon
+                  Icon(Icons.person, size: 45, color: Colors.grey[800],),
+                ],),
+              ), const SizedBox(height: 20,),
+          
+              // welcome home section
+              Padding(
+               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+               child: Column( crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                // menu icons
-                Image.asset('lib/icons/menu.png', height: 45, color: Colors.grey[800],),
-                      
-                // account icon
-                Icon(Icons.person, size: 45, color: Colors.grey[800],),
-              ],),
-            ), const SizedBox(height: 20,),
-        
-            // welcome home section
-            Padding(
-             padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-             child: Column( crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Welcome Home,", style: TextStyle(fontSize: 28, color: Colors.grey[700]),),
-                const Text("Prince Obeten", style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),),
-              ],
+                  Text("Welcome Home,", style: TextStyle(fontSize: 28, color: Colors.grey[700]),),
+                  const Text("Prince Obeten", style: TextStyle(fontSize: 33, fontWeight: FontWeight.bold),),
+                ],
+               ),
+             ), const SizedBox(height: 10),
+          
+            // Seperator line
+             Padding(
+               padding: const EdgeInsets.all(5.0),
+               child: Divider(color: Colors.grey[400], thickness: 1,),
              ),
-           ), const SizedBox(height: 10),
-
-          // Seperator line
-           Padding(
-             padding: const EdgeInsets.all(5.0),
-             child: Divider(color: Colors.grey[400], thickness: 1,),
-           ),
-
-          // smart devices + grid
-          Padding( padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-            child: Text('Smart Devices', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.grey[800]),),
-          ),
-          Expanded(child: GridView.builder(
-              padding: const EdgeInsets.all(25.0),
-              itemCount: mySmartDevices.length,
-              // physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, 
-                childAspectRatio: 1 /1.2,
-              ), 
-              itemBuilder: (context, index) {
-                return SmartDeviceBox(
-                  smartDeviceName: mySmartDevices[index][0],
-                  iconPath: mySmartDevices[index][1],
-                  powerOn: mySmartDevices[index][2],
-                  onChanged: (value) => powerSwitchChanged(value, index),
-                );
-              }
+          
+            // smart devices + grid
+            Padding( padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: Text('Smart Devices', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.grey[800]),),
             ),
-          ),
-
-        ],),
+            Expanded(child: GridView.builder(
+                padding: const EdgeInsets.all(25.0),
+                itemCount: mySmartDevices.length,
+                // physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, 
+                  childAspectRatio: 1 /1.2,
+                ), 
+                itemBuilder: (context, index) {
+                  return SmartDeviceBox(
+                    smartDeviceName: mySmartDevices[index][0],
+                    iconPath: mySmartDevices[index][1],
+                    powerOn: mySmartDevices[index][2],
+                    onChanged: (value) => powerSwitchChanged(value, index),
+                  );
+                }
+              ),
+            ),
+          
+          ],),
+        ),
       )
     );
   }
